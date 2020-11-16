@@ -1,4 +1,4 @@
-const merge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 const common = require('./webpack.common.js');
 const CompressionPlugin = require('compression-webpack-plugin');
 
@@ -6,6 +6,18 @@ module.exports = merge(common, {
   mode: 'production',
   output: {
     filename: '[name].[chunkhash].js',
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        vendor: {
+          chunks: 'initial',
+          name: 'vendor',
+          test: 'vendor',
+          enforce: true,
+        },
+      },
+    },
   },
   plugins: [
     new CompressionPlugin({

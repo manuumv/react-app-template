@@ -5,6 +5,8 @@
     "@babel/preset-typescript"
   ],
   "plugins": [
-    "emotion"
+    "@emotion",
+    "react-refresh/babel",
+    "@babel/plugin-transform-runtime"
   ]
 }
