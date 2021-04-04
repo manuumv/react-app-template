@@ -16,6 +16,22 @@ module.exports = merge(common, {
     stats: 'errors-only',
     hot: true,
   },
+  module: {
+    rules: [
+      {
+        test: /\.(ts|tsx)$/,
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              plugins: ['react-refresh/babel'],
+            },
+          },
+        ],
+      },
+    ],
+  },
   plugins: [
     new HotModuleReplacementPlugin(),
     new ReactRefreshWebpackPlugin()
